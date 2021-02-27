@@ -5,6 +5,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { PatientsComponent } from './patients/patients.component';
+import {RouterModule, Routes} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+
+const routes: Routes = [
+  {path: '', redirectTo: '/patients', pathMatch: 'full'},
+  {path:'patients', component: PatientsComponent}
+] 
 
 @NgModule({
   declarations: [
@@ -14,7 +21,9 @@ import { PatientsComponent } from './patients/patients.component';
     PatientsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
